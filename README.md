@@ -34,7 +34,7 @@ public @interface BindFieldView {
     int id();
 }
 ```    
-租界中有id属性，用来存放控件id，接下来创建注解处理类    
+注解中有id属性，用来存放控件id，接下来创建注解处理类    
 ```java
 @AutoService(Processor.class)
 public class BindFieldViewProcessor extends AbstractProcessor {
@@ -85,8 +85,8 @@ public class BindFieldViewProcessor extends AbstractProcessor {
 }
 ```   
 这里新建了一个类继承了AbstractProcessor类，主要就是添加了关注的注解，然后在process方法中就可以开始创作了;    
-这里说一下简单原理：  
-1、为每个Activity自动生成了一个以activity类名加上“$$Bind”的控件绑定类，创建该类的实例并调用init()方法就可以完成控件的赋值；    
+说一下简单原理：  
+1、为每个Activity自动生成了一个以activity类名加上“$$Bind”结尾的类名的控件绑定类，创建该类的实例并调用init()方法就可以完成控件的赋值；    
 2、把第一部分创建的所有的类，用一个管理类，管理起来；       
 3、创建一个工具，调用管理类的bind()方法，既可以获取第一步创建的类，继而完成初始化      
 4、在每个activity的onCreate()方法中调用BindFieldViewUtil.getInstance().bind(this)即可      
@@ -175,13 +175,19 @@ public void play(ProcessingEnvironment processingEnvironment) {
         }
     }
 ```     
-apt代码也算是比较容易写了，相对于javassist，这里就不多做讲解了，直接上生成的效果图:  
-![目录结构](image/20180810160135.png)    
-在这个目录下面生成的就是用apt自动生成的代码，其中以$$Bind结尾的就是上面说的每个Activity的控件绑定类;      
-![生成的代码](image/20180810160358.png)    
+apt代码也算是比较容易写了，这里对语法部分就不多做讲解了，直接上生成的效果图:      
+
+
+![目录结构](image/20180810160135.png)       
+
+
+在这个目录下面生成的就是用apt自动生成的代码，其中以$$Bind结尾的就是上面说的每个Activity的控件绑定类;       
+ 
+![生成的代码](image/20180810160358.png)      
+ 
 图片中就是自动生成的代码了。简单的butterknife注解框架就完成了，当然要想真正使用，这点是不够的，还需继续完善；    
       
-#### 1、这里再模仿一个很简单的ARouter的实例：     
+#### 2、这里再模仿一个很简单的ARouter的实例：     
 做过Android开发的都知道什么是模块化，随着APP越来越大，功能模块越来越多，也相对独立， 我们就需要独立模块出去了，   
 以便于项目管理，这之中模块之间的activity相互调用，就是一个大问题了，但是运用APT技术，我们可以解决这个问题，     
 ARouter框架也就由此而来，其实说到这个框架，原理也是很简单的，那么下面就来实际动手;     
@@ -217,7 +223,7 @@ public @interface ArouterPath {
     }
 ```     
 这里贴出主要代码，说下原理；   
-1、创建一个统一管理路径类，使用Map集合，管理path和Actvity的对应关系；
+1、创建一个统一管理路径类，使用Map集合，管理path和Actvity的对应关系；     
 2、工具类，调用管理类，根据Path既可查询到相关的Actvity，并启动它；     
 接下来就是管理类的创建代码了：     
 ````java
@@ -268,12 +274,13 @@ public void play(ProcessingEnvironment processingEnvironment) throws ClassNotFou
         }
     }
 ````     
-生成逻辑也是相当的简单，效果图如下：   
+生成逻辑也是相当的简单，效果图如下：    
+  
 ![效果图](image/20180810161734.png)       
 
 
 ## 一、总结：     
-总体来说，aptnote框架确实非常强大，特别是在代码书写这一块，比javassist要好用的多，不过apt也有它的缺陷，
+总体来说，aptnote框架确实非常强大，特别是在代码书写这一块，比javassist要好用得多，不过apt也有它的缺陷，
 它只能生成新的类，不能修改原有类（也是遵守了AOP，不对源码进行修改）；    
 说到这里，如果想对源码进行修改，又不在我们的代码中留下痕迹，就只能修改编译后的class文件了，   
 而这里，修改class文件，封装的还算好用的就是javassist了，有兴趣可以关注[javassist示例](https://github.com/alfredxl/PluginDemo)；    
