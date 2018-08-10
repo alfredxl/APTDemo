@@ -67,7 +67,6 @@ public class ARouterCollection {
             ArouterPath mArouterPath = item.getAnnotation(ArouterPath.class);
             // 获取控件ID
             String path = mArouterPath.path();
-            System.out.println("ccc" + path);
             // 添加方法内容
             constructors.addStatement("map.put($S, $T.class)", path, item);
         }
