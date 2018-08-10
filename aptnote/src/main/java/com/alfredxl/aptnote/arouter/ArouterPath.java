@@ -1,4 +1,4 @@
-package com.alfredxl.aptnote;
+package com.alfredxl.aptnote.arouter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,10 +10,10 @@ import java.lang.annotation.Target;
  * <br> Description:
  * <br>
  * <br> @author:      谢文良
- * <br> Date:        2018/6/28 16:17
+ * <br> Date:        2018/8/9 17:18
  */
 @Retention(RetentionPolicy.CLASS)
-@Target(ElementType.FIELD)
-public @interface AptField {
-    String key();
+@Target(ElementType.TYPE)
+public @interface ArouterPath {
+    String path();
 }
