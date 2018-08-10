@@ -183,9 +183,24 @@ apt代码也算是比较容易写了，这里对语法部分就不多做讲解�
 
 在这个目录下面生成的就是用apt自动生成的代码，其中以$$Bind结尾的就是上面说的每个Activity的控件绑定类;       
  
-![生成的代码](image/20180810160358.png)      
+```java
+public class MainActivity$$Bind implements IBind {
+  private Activity activity;
+
+  public MainActivity$$Bind(Activity activity) {
+    this.activity = activity;
+  }
+
+  @Override
+  public void init() {
+    MainActivity targetActivity = (MainActivity)activity;
+    targetActivity.mTextView = targetActivity.findViewById(2131165315);
+    targetActivity.mImageView = targetActivity.findViewById(2131165247);
+  }
+}
+```
  
-图片中就是自动生成的代码了。简单的butterknife注解框架就完成了，当然要想真正使用，这点是不够的，还需继续完善；    
+上面就是自动生成的代码了。简单的butterknife注解框架就完成了，当然要想真正使用，这点是不够的，还需继续完善；    
       
 #### 2、这里再模仿一个很简单的ARouter的实例：     
 做过Android开发的都知道什么是模块化，随着APP越来越大，功能模块越来越多，也相对独立， 我们就需要独立模块出去了，   
@@ -274,9 +289,24 @@ public void play(ProcessingEnvironment processingEnvironment) throws ClassNotFou
         }
     }
 ````     
-生成逻辑也是相当的简单，效果图如下：    
+生成逻辑也是相当的简单，效果如下：    
   
-![效果图](image/20180810161734.png)       
+```java
+public class ARouterService implements IARouterService {
+  private Map<String, Class> map;
+
+  public ARouterService() {
+    map = new HashMap();
+    map.put("Activity2", Activity2.class);
+  }
+
+  @Override
+  public Class getActivityClass(String path) {
+    return map.get(path);
+  }
+}
+
+```    
 
 
 ## 一、总结：     
