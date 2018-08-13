@@ -88,7 +88,7 @@ public class BindFieldViewProcessor extends AbstractProcessor {
 
 类图如下:
 
-![类图](image/20180813110004.png)
+![类图](image/20180813110006.png)
 
 说一下简单原理：  
 1、为每个Activity自动生成了一个以activity类名加上“$$Bind”结尾的类名的控件绑定类，创建该类的实例并调用init()方法就可以完成控件的赋值；    
