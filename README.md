@@ -85,6 +85,11 @@ public class BindFieldViewProcessor extends AbstractProcessor {
 }
 ```   
 这里新建了一个类继承了AbstractProcessor类，主要就是添加了关注的注解，然后在process方法中就可以开始创作了;    
+
+类图如下:
+
+![类图](image/20180813110004.png)
+
 说一下简单原理：  
 1、为每个Activity自动生成了一个以activity类名加上“$$Bind”结尾的类名的控件绑定类，创建该类的实例并调用init()方法就可以完成控件的赋值；    
 2、把第一部分创建的所有的类，用一个管理类，管理起来；       
