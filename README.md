@@ -88,7 +88,7 @@ public class BindFieldViewProcessor extends AbstractProcessor {
 
 类图如下:
 
-![类图](image/20180813110006.png)
+![类图](image/20180813115959.png)
 
 说一下简单原理：  
 1、为每个Activity自动生成了一个以activity类名加上“$$Bind”结尾的类名的控件绑定类，创建该类的实例并调用init()方法就可以完成控件的赋值；    
@@ -183,8 +183,7 @@ public void play(ProcessingEnvironment processingEnvironment) {
 apt代码也算是比较容易写了，这里对语法部分就不多做讲解了，直接上生成的效果图:      
 
 
-![目录结构](image/20180810160135.png)       
-
+![目录结构](image/20180810160135.png)         
 
 在这个目录下面生成的就是用apt自动生成的代码，其中以$$Bind结尾的就是上面说的每个Activity的控件绑定类;       
  
@@ -242,7 +241,12 @@ public @interface ArouterPath {
         return true;
     }
 ```     
-这里贴出主要代码，说下原理；   
+这里贴出主要代码；   
+
+类图
+
+![类图](image/20180813115715.png)      
+
 1、创建一个统一管理路径类，使用Map集合，管理path和Actvity的对应关系；     
 2、工具类，调用管理类，根据Path既可查询到相关的Actvity，并启动它；     
 接下来就是管理类的创建代码了：     
