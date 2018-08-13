@@ -8,8 +8,9 @@ import android.widget.TextView;
 
 import com.alfredxl.aptdemo.arouter.ARouter;
 import com.alfredxl.aptdemo.butterknife.BindFieldViewUtil;
+import com.alfredxl.aptnote.arouter.ArouterPath;
 import com.alfredxl.aptnote.butterknife.BindFieldView;
-
+@ArouterPath(path = "Activity1")
 public class MainActivity extends AppCompatActivity {
     @BindFieldView(id = "R.id.textView")
     TextView mTextView;
