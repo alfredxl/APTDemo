@@ -68,7 +68,7 @@ public class BindFieldViewCollection {
             // 获取注解成员变量的注解
             BindFieldView mBindFieldView = item.getAnnotation(BindFieldView.class);
             // 获取控件ID
-            int id = mBindFieldView.id();
+            String id = mBindFieldView.id();
             // 添加方法内容
             methodBuilder.addStatement("targetActivity.$N = targetActivity.findViewById($L)", item.getSimpleName(), id);
         }

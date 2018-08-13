@@ -42,20 +42,5 @@ public class BindFieldViewUtil {
         if(mBindFieldViewService != null){
             mBindFieldViewService.bind(activity).init();
         }
-//
-//
-//        try {
-//            Class bindClass = Class.forName(activity.getClass().getName() + "$$Bind");
-//            Constructor bindConstructor = bindClass.getConstructor(Activity.class);
-//            bindConstructor.setAccessible(true);
-//            Object bindObject = bindConstructor.newInstance(activity);
-//            Method init = bindClass.getDeclaredMethod("init");
-//            init.setAccessible(true);
-//            init.invoke(bindObject);
-//        } catch (ClassNotFoundException | NoSuchMethodException
-//                | SecurityException | IllegalAccessException
-//                | InstantiationException | InvocationTargetException e) {
-//            e.printStackTrace();
-//        }
     }
 }

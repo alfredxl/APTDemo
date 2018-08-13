@@ -17,7 +17,7 @@ import com.alfredxl.aptnote.butterknife.BindFieldView;
  */
 @ArouterPath(path = "Activity2")
 public class Activity2 extends AppCompatActivity {
-    @BindFieldView(id = R.id.textView)
+    @BindFieldView(id = "R.id.textView")
     TextView mTextView;
 
     @Override

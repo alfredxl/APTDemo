@@ -11,9 +11,9 @@ import com.alfredxl.aptdemo.butterknife.BindFieldViewUtil;
 import com.alfredxl.aptnote.butterknife.BindFieldView;
 
 public class MainActivity extends AppCompatActivity {
-    @BindFieldView(id = R.id.textView)
+    @BindFieldView(id = "R.id.textView")
     TextView mTextView;
-    @BindFieldView(id = R.id.iamgeView)
+    @BindFieldView(id = "R.id.iamgeView")
     ImageView mImageView;
 
 
