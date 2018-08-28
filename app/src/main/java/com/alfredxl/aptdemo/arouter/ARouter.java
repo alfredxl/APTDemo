@@ -26,7 +26,7 @@ public class ARouter {
 
     private ARouter() {
         try {
-            mARouterService = (IARouterService) Class.forName("com.alfredxl.aptdemo.ARouterService").newInstance();
+            setARouterService((IARouterService) Class.forName("com.alfredxl.aptdemo.ARouterService").newInstance());
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -34,6 +34,10 @@ public class ARouter {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setARouterService(IARouterService service) {
+        this.mARouterService = service;
     }
 
 
